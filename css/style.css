@@ -1,0 +1,532 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:flex-end;
+    background: linear-gradient(to top, #ff9a3c, #ffb347, #ffd27f, #1a1a1a);
+    overflow:hidden;
+}
+
+/* Escena */
+.scene{
+    position:relative;
+    width:300px;
+    height:650px;
+}
+
+/* 🌻 Girasol */
+.sunflower{
+    position:relative;
+    width:300px;
+    height:650px;
+    display:flex;
+    justify-content:center;
+    align-items:flex-end;
+    animation: sway 4s ease-in-out infinite 5s;
+    transform-origin: bottom center;
+}
+
+/* 🌿 TALLO */
+.stem{
+    width:16px;
+    height:0;
+    background:linear-gradient(to top, #1f7a1f, #2ecc71);
+    border-radius:10px;
+    animation: growStem 3s ease forwards;
+    position:relative;
+}
+
+/* 🌿 HOJAS */
+.stem::before,
+.stem::after{
+    content:"";
+    position:absolute;
+    width:90px;
+    height:45px;
+    background:linear-gradient(to right, #2ecc71, #1f7a1f);
+    border-radius:50% 50% 50% 0;
+    top:150px;
+}
+
+.stem::before{
+    left:-80px;
+    transform:rotate(-30deg);
+}
+
+.stem::after{
+    right:-80px;
+    transform:rotate(30deg) scaleX(-1);
+}
+
+/* 🌻 CABEZA */
+.head{
+    position:absolute;
+    bottom:380px;
+    width:220px;
+    height:220px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    transform:scale(0);
+    animation: bloom 2s ease forwards 2.5s;
+}
+
+/* 🌻 PÉTALOS PERFECTAMENTE CENTRADOS */
+.petal{
+    position:absolute;
+    width:40px;
+    height:120px;
+    background:linear-gradient(to bottom, #fff176, #ffb300);
+    border-radius:50%;
+    top:50%;
+    left:50%;
+    transform-origin:center bottom;
+}
+
+/* Rotaciones */
+.p1  { transform: translate(-50%, -100%) rotate(0deg); }
+.p2  { transform: translate(-50%, -100%) rotate(22.5deg); }
+.p3  { transform: translate(-50%, -100%) rotate(45deg); }
+.p4  { transform: translate(-50%, -100%) rotate(67.5deg); }
+.p5  { transform: translate(-50%, -100%) rotate(90deg); }
+.p6  { transform: translate(-50%, -100%) rotate(112.5deg); }
+.p7  { transform: translate(-50%, -100%) rotate(135deg); }
+.p8  { transform: translate(-50%, -100%) rotate(157.5deg); }
+.p9  { transform: translate(-50%, -100%) rotate(180deg); }
+.p10 { transform: translate(-50%, -100%) rotate(202.5deg); }
+.p11 { transform: translate(-50%, -100%) rotate(225deg); }
+.p12 { transform: translate(-50%, -100%) rotate(247.5deg); }
+.p13 { transform: translate(-50%, -100%) rotate(270deg); }
+.p14 { transform: translate(-50%, -100%) rotate(292.5deg); }
+.p15 { transform: translate(-50%, -100%) rotate(315deg); }
+.p16 { transform: translate(-50%, -100%) rotate(337.5deg); }
+
+/* 🌰 CENTRO PERFECTAMENTE CENTRADO */
+.center{
+    position:absolute;
+    width:100px;
+    height:100px;
+    background: radial-gradient(circle at center, #6b3f00, #3d2200);
+    border-radius:50%;
+    box-shadow: inset 0 0 20px rgba(0,0,0,0.6);
+    z-index:10;
+}
+
+
+/* Animaciones */
+
+@keyframes growStem{
+    from{ height:0; }
+    to{ height:380px; }
+}
+
+@keyframes bloom{
+    from{ transform:scale(0); }
+    to{ transform:scale(1); }
+}
+
+@keyframes sway{
+    0%{ transform:rotate(0deg); }
+    50%{ transform:rotate(2deg); }
+    100%{ transform:rotate(0deg); }
+}
+
+
+.sparkles{
+    position:absolute;
+    bottom:380px;
+    left:50%;
+    transform:translateX(-50%);
+    width:220px;
+    height:220px;
+    pointer-events:none;
+    z-index:20;
+}
+
+.sparkles span{
+    position:absolute;
+    width:6px;
+    height:6px;
+    background: radial-gradient(circle, #fff9c4, #ffcc00);
+    border-radius:50%;
+    box-shadow: 0 0 10px #ffcc00, 0 0 20px #ffcc00;
+    opacity:0;
+    animation: floatUp 4s infinite ease-in;
+}
+
+/* 🌟 CENTRO */
+.sparkles span:nth-child(1){
+    left:50%;
+    bottom:50%;
+    animation-delay:0s;
+}
+
+.sparkles span:nth-child(2){
+    left:50%;
+    bottom:50%;
+    animation-delay:1s;
+}
+
+/* 🌟 LADO IZQUIERDO (desde pétalos) */
+.sparkles span:nth-child(3){
+    left:25%;
+    bottom:55%;
+    animation-delay:0.5s;
+}
+
+.sparkles span:nth-child(4){
+    left:30%;
+    bottom:45%;
+    animation-delay:1.8s;
+}
+
+/* 🌟 LADO DERECHO */
+.sparkles span:nth-child(5){
+    left:75%;
+    bottom:55%;
+    animation-delay:1.2s;
+}
+
+.sparkles span:nth-child(6){
+    left:70%;
+    bottom:45%;
+    animation-delay:2.2s;
+}
+
+@keyframes floatUp{
+    0%{
+        transform: translateY(0) scale(0.5);
+        opacity:0;
+    }
+    20%{
+        opacity:1;
+    }
+    100%{
+        transform: translateY(-220px) scale(1.2);
+        opacity:0;
+    }
+}
+
+
+/* 🌿 BROTES AGRUPADOS DELICADOS */
+
+.grass{
+    position:absolute;
+    bottom:0;
+    left:50%;
+    transform:translateX(-50%);
+    width:320px;
+    height:200px;
+    pointer-events:none;
+    z-index:5;
+}
+
+/* Cada grupo */
+.tuft{
+    position:absolute;
+    bottom:0;
+    width:60px;
+    height:150px;
+    transform-origin:bottom center;
+    animation:tuftSway 6s infinite ease-in-out;
+}
+
+/* Posiciones alrededor del tallo */
+.tuft:nth-child(1){ left:25%; animation-delay:0s; }
+.tuft:nth-child(2){ left:35%; animation-delay:1s; }
+.tuft:nth-child(3){ left:50%; animation-delay:2s; }
+.tuft:nth-child(4){ left:65%; animation-delay:3s; }
+.tuft:nth-child(5){ left:75%; animation-delay:1.5s; }
+
+
+/* Hojas dentro del grupo */
+.tuft span{
+    position:absolute;
+    bottom:0;
+    width:8px;
+    background:linear-gradient(to top, #2e7d32, #81c784);
+    border-radius:100% 100% 0 100%;
+    transform-origin:bottom center;
+}
+
+/* alturas variadas */
+.tuft span:nth-child(1){ height:100px; }
+.tuft span:nth-child(2){ height:140px; }
+.tuft span:nth-child(3){ height:120px; }
+
+
+/* Distribución en abanico */
+.tuft span:nth-child(1){
+    left:20px;
+    transform:rotate(-25deg);
+}
+
+.tuft span:nth-child(2){
+    left:25px;
+    transform:rotate(0deg);
+    height:140px;
+}
+
+.tuft span:nth-child(3){
+    left:30px;
+    transform:rotate(25deg);
+}
+
+/* Movimiento suave */
+@keyframes tuftSway{
+    0%,100%{
+        transform:rotate(-4deg);
+    }
+    50%{
+        transform:rotate(4deg);
+    }
+}
+
+
+/* 🌿 CAPA TRASERA (más pequeña y suave) */
+
+.grass.back{
+    z-index:3;
+    opacity:0.6;
+    width:460px;
+}
+
+/* Brotes más pequeños */
+.tuft.small{
+    width:50px;
+    height:120px;
+    animation:tuftSwayBack 7s infinite ease-in-out;
+}
+
+/* Posiciones detrás */
+.grass.back .tuft:nth-child(1){
+    left:30%;
+    animation-delay:0.5s;
+}
+
+.grass.back .tuft:nth-child(2){
+    left:60%;
+    animation-delay:2s;
+}
+
+.grass.back .tuft:nth-child(3){
+    left:45%;
+    animation-delay:3.5s;
+}
+
+
+/* Hojas más pequeñas */
+.tuft.small span{
+    height:90px;
+    width:6px;
+}
+
+/* Movimiento más suave */
+@keyframes tuftSwayBack{
+    0%,100%{
+        transform:rotate(-3deg);
+    }
+    50%{
+        transform:rotate(3deg);
+    }
+}
+
+
+/* 🌹 ROSAS */
+
+.rose{
+    position:absolute;
+    bottom:0;
+    width:120px;
+    height:400px;
+    animation: roseSway 6s infinite ease-in-out;
+    z-index:15; /* MÁS ALTO que el girasol */
+}
+
+
+/* Posición izquierda */
+.rose.left{
+    left:0%;
+}
+
+/* Posición derecha */
+.rose.right{
+    left:70%;
+}
+
+/* Tallo */
+.rose .stem{
+    position:absolute;
+    bottom:0;
+    left:50%;
+    transform:translateX(-50%);
+    width:8px;
+    height:260px;
+    background:linear-gradient(to top, #1b5e20, #4caf50);
+    border-radius:4px;
+}
+
+/* Hojas */
+.rose .leaf{
+    position:absolute;
+    width:40px;
+    height:20px;
+    background:linear-gradient(to right, #2e7d32, #66bb6a);
+    border-radius:50%;
+}
+
+.rose .leaf-left{
+    bottom:120px;
+    left:10px;
+    transform:rotate(-30deg);
+}
+
+.rose .leaf-right{
+    bottom:160px;
+    right:10px;
+    transform:rotate(30deg);
+}
+
+/* Flor roja */
+/* 🌹 ROSA 2D ESTILIZADA */
+
+.rose .flower{
+    position:absolute;
+    bottom:300px;
+    left:50%;
+    transform:translateX(-50%);
+    width:80px;
+    height:80px;
+}
+
+/* Pétalos exteriores */
+.rose .flower::before{
+    content:"";
+    position:absolute;
+    width:80px;
+    height:80px;
+    background:#c62828;
+    border-radius:50%;
+    box-shadow:
+        -18px 0 0 #d32f2f,
+        18px 0 0 #b71c1c,
+        0 -18px 0 #e53935,
+        0 18px 0 #b71c1c;
+}
+
+/* Centro */
+.rose .flower::after{
+    content:"";
+    position:absolute;
+    width:38px;
+    height:38px;
+    background:#8e0000;
+    border-radius:50%;
+    top:50%;
+    left:50%;
+    transform:translate(-50%, -50%);
+}
+
+/* 🌹 pétalo izquierdo */
+.rose-sparkles span:nth-child(2){
+    bottom:55%;
+    left:30%;
+    animation-delay:1.2s;
+}
+
+/* 🌹 pétalo derecho */
+.rose-sparkles span:nth-child(3){
+    bottom:55%;
+    left:70%;
+    animation-delay:2.4s;
+}
+
+/* Movimiento suave */
+@keyframes roseSway{
+    0%,100%{
+        transform:rotate(-3deg);
+    }
+    50%{
+        transform:rotate(3deg);
+    }
+}
+
+
+/* 🌹 DESTELLOS ROSA */
+
+.rose-sparkles{
+    position:absolute;
+    top:0;
+    left:50%;
+    transform:translateX(-50%);
+    width:80px;
+    height:80px;
+    pointer-events:none;
+}
+
+/* Partículas */
+.rose-sparkles span{
+    position:absolute;
+    width:6px;
+    height:6px;
+    background:radial-gradient(circle, #ffffff 0%, #ff1744 40%, #b71c1c 80%);
+    border-radius:50%;
+    opacity:0;
+    box-shadow:
+        0 0 12px #ff1744,
+        0 0 20px #b71c1c;
+    animation: roseFloat 4s infinite ease-in;
+}
+
+/* Variaciones */
+.rose-sparkles span:nth-child(1){ animation-delay:0s; }
+.rose-sparkles span:nth-child(2){ animation-delay:1.2s; }
+.rose-sparkles span:nth-child(3){ animation-delay:2.4s; }
+
+@keyframes roseFloat{
+    0%{
+        transform:translate(-50%, 0) scale(0.5);
+        opacity:0;
+    }
+    15%{
+        opacity:1;
+    }
+    100%{
+        transform:translate(-50%, -120px) scale(1.3);
+        opacity:0;
+    }
+}
+
+
+.message{
+    position:absolute;
+    top:40px;
+    width:100%;
+    text-align:center;
+    font-size:28px;
+    font-family:'Segoe UI', cursive;
+    color:#ffffff;
+    text-shadow:0 0 10px rgba(255,255,255,0.6);
+    animation: fadeIn 3s ease forwards 4s;
+    opacity:0;
+}
+
+@keyframes fadeIn{
+    from{ opacity:0; transform:translateY(-10px); }
+    to{ opacity:1; transform:translateY(0); }
+}
+
+@media (max-width: 600px){
+    
+    .scene{
+        transform: scale(0.85);
+        transform-origin: bottom center;
+    }
+
+}
