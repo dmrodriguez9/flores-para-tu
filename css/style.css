@@ -530,3 +530,13 @@ body{
     }
 
 }
+
+.firma {
+  position: fixed;
+  bottom: 20px;
+  right: 25px;
+  font-size: 14px;
+  color: #2c2c2c;
+  font-style: italic;
+  opacity: 0.8;
+}
